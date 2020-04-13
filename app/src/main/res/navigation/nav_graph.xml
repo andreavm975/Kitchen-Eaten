@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/restaurantsListFragment">
+
+    <fragment
+        android:id="@+id/restaurantsListFragment"
+        android:name="com.itb.kitcheneaten.fragments.RestaurantsListFragment"
+        android:label="restaurants_list_fragment"
+        tools:layout="@layout/restaurants_list_fragment" >
+        <action
+            android:id="@+id/action_restaurantsListFragment_to_restaurantDetailFragment"
+            app:destination="@id/restaurantDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantDetailFragment"
+        android:name="com.itb.kitcheneaten.fragments.RestaurantDetailFragment"
+        android:label="restaurant_detail_fragment"
+        tools:layout="@layout/restaurant_detail_fragment" >
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_tableReserveFragment"
+            app:destination="@id/tableReserveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tableReserveFragment"
+        android:name="com.itb.kitcheneaten.fragments.TableReserveFragment"
+        android:label="table_reserve_fragment"
+        tools:layout="@layout/table_reserve_fragment" >
+        <action
+            android:id="@+id/action_tableReserveFragment_to_reserveCompletedFragment"
+            app:destination="@id/reserveCompletedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reserveCompletedFragment"
+        android:name="com.itb.kitcheneaten.fragments.ReserveCompletedFragment"
+        android:label="reserve_completed_fragment"
+        tools:layout="@layout/reserve_completed_fragment" />
+</navigation>

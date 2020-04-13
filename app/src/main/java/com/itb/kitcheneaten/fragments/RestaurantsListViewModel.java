@@ -1,7 +1,13 @@
 package com.itb.kitcheneaten.fragments;
 
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
 
-public class RestaurantsListViewModel extends ViewModel {
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+
+public class RestaurantsListViewModel extends AndroidViewModel {
+    public RestaurantsListViewModel(@NonNull Application application) {
+        super(application);
+    }
     // TODO: Implement the ViewModel
 }
