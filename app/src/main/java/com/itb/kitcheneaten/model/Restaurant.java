@@ -17,11 +17,11 @@ public class Restaurant {
         this.nTables = nTables;
     }
 
-    public String getNombre() {
+    public String getName() {
         return name;
     }
 
-    public void setNombre(String nombre) {
+    public void setName(String nombre) {
         this.name = nombre;
     }
 
