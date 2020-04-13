@@ -1,4 +1,4 @@
-package com.itb.kitcheneaten;
+package com.itb.kitcheneaten.fragments;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -12,24 +12,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class RestaurantsListFragment extends Fragment {
+import com.itb.kitcheneaten.R;
 
-    private RestaurantsListViewModel mViewModel;
+public class RestaurantDetailFragment extends Fragment {
 
-    public static RestaurantsListFragment newInstance() {
-        return new RestaurantsListFragment();
+    private RestaurantDetailViewModel mViewModel;
+
+    public static RestaurantDetailFragment newInstance() {
+        return new RestaurantDetailFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.restaurants_list_fragment, container, false);
+        return inflater.inflate(R.layout.restaurant_detail_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(RestaurantsListViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(RestaurantDetailViewModel.class);
         // TODO: Use the ViewModel
     }
 
