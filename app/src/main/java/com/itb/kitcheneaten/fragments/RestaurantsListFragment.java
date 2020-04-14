@@ -1,5 +1,6 @@
 package com.itb.kitcheneaten.fragments;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -16,6 +17,10 @@ import android.view.ViewGroup;
 
 import com.itb.kitcheneaten.R;
 import com.itb.kitcheneaten.fragments.adapter.RestaurantAdapter;
+import com.itb.kitcheneaten.model.Restaurant;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,12 +58,21 @@ public class RestaurantsListFragment extends Fragment {
         myAdapter = new RestaurantAdapter();
         myRecyclerView.setAdapter(myAdapter);
 
+        mViewModel.getAllRestaurants();
+        LiveData<ArrayList<Restaurant>> restaurants = mViewModel.getRestaurants();
+        restaurants.observe(this, this::restaurantsChanged);
 
+
+    }
+
+    private void restaurantsChanged(ArrayList<Restaurant> restaurants) {
+
+        myAdapter.setRestaurants(restaurants);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
     }
 }

@@ -4,16 +4,16 @@ public class Restaurant {
 
     private String name;
     private String address;
-    private String tel;
-    private int nTables;
+    private String telf;
+    private Integer nTables;
 
     public Restaurant() {
     }
 
-    public Restaurant(String name, String address, String tel, int nTables) {
+    public Restaurant(String name, String address, String telf, int nTables) {
         this.name = name;
         this.address = address;
-        this.tel = tel;
+        this.telf = telf;
         this.nTables = nTables;
     }
 
@@ -33,12 +33,12 @@ public class Restaurant {
         this.address = address;
     }
 
-    public String getTel() {
-        return tel;
+    public String getTelf() {
+        return telf;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setTelf(String telf) {
+        this.telf = telf;
     }
 
     public int getnTables() {
