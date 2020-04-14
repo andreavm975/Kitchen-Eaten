@@ -1,4 +1,4 @@
-package com.itb.kitcheneaten;
+package com.itb.kitcheneaten.fragments;
 
 import androidx.lifecycle.ViewModel;
 
