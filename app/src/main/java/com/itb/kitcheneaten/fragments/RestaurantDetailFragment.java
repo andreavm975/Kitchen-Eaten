@@ -77,6 +77,7 @@ public class RestaurantDetailFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(RestaurantDetailViewModel.class);
+        loading.setRefreshing(true);
         loadData();
         loading.setColorSchemeColors(R.color.colorPrimaryDark);
         loading.setProgressBackgroundColorSchemeColor(R.color.colorAccent);
@@ -90,7 +91,7 @@ public class RestaurantDetailFragment extends Fragment {
     }
 
     private void loadData() {
-        loading.setRefreshing(true);
+
         LiveData<Restaurant> restaurant = mViewModel.getRestaurant(name);
         restaurant.observe(this, this::onRestaurantChanged);
     }

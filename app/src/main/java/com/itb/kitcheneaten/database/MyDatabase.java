@@ -46,7 +46,7 @@ public class MyDatabase {
 
     public void getRestaurantFromName(String name) {
 
-        db.collection("restaurantes").document(name).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection("restaurantes").document(name.toLowerCase()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
