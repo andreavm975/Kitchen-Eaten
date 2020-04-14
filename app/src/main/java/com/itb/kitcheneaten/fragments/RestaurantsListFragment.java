@@ -3,13 +3,17 @@ package com.itb.kitcheneaten.fragments;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +36,9 @@ public class RestaurantsListFragment extends Fragment {
     @BindView(R.id.recyclerview)
     RecyclerView myRecyclerView;
 
+    @BindView(R.id.swipe_layout)
+    SwipeRefreshLayout loading;
+
     RestaurantAdapter myAdapter;
 
     private RestaurantsListViewModel mViewModel;
@@ -46,6 +53,7 @@ public class RestaurantsListFragment extends Fragment {
         return inflater.inflate(R.layout.restaurants_list_fragment, container, false);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -59,11 +67,38 @@ public class RestaurantsListFragment extends Fragment {
         myRecyclerView.setAdapter(myAdapter);
         myAdapter.setListener(this::viewRestaurant);
 
+
+        loading.setRefreshing(true);
+        loadData();
+        loading.setColorSchemeColors(R.color.colorPrimaryDark);
+        loading.setProgressBackgroundColorSchemeColor(R.color.colorAccent);
+
+        loading.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadData();
+            }
+        });
+
+
+    }
+
+    public void loadData() {
+
         mViewModel.getAllRestaurants();
         LiveData<ArrayList<Restaurant>> restaurants = mViewModel.getRestaurants();
         restaurants.observe(this, this::restaurantsChanged);
+    }
+
+    private void restaurantsChanged(ArrayList<Restaurant> restaurants) {
+        myAdapter.setRestaurants(restaurants);
+        loading.setRefreshing(false);
+    }
 
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -72,14 +107,11 @@ public class RestaurantsListFragment extends Fragment {
         ButterKnife.bind(this, view);
     }
 
-    private void restaurantsChanged(ArrayList<Restaurant> restaurants) {
-
-        myAdapter.setRestaurants(restaurants);
-    }
-
     private void viewRestaurant(Restaurant restaurant) {
 
-        
+        String idName = restaurant.getName();
+        NavDirections direction = RestaurantsListFragmentDirections.restaurantListToDetail(idName);
+        Navigation.findNavController(getView()).navigate(direction);
 
     }
 

@@ -17,7 +17,6 @@ import com.itb.kitcheneaten.R;
 
 import java.util.Objects;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -41,7 +40,7 @@ public class RestaurantDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         if(getArguments()!=null){
-            name = RestaurantDetailFragmentArgs.fromBundle(getArguments().);
+            name = RestaurantDetailFragmentArgs.fromBundle(getArguments()).getName();
         }
     }
 

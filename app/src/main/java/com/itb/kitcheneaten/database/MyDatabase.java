@@ -35,9 +35,11 @@ public class MyDatabase {
                         aux.add(restaurant);
                     }
                     restaurants.postValue(aux);
+
                 }
             }
         });
+        aux.clear();
     }
 
     public void getRestaurantFromName() {

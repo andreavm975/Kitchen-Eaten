@@ -11,7 +11,7 @@
         android:label="restaurants_list_fragment"
         tools:layout="@layout/restaurants_list_fragment" >
         <action
-            android:id="@+id/action_restaurantsListFragment_to_restaurantDetailFragment"
+            android:id="@+id/restaurant_list_to_detail"
             app:destination="@id/restaurantDetailFragment" />
     </fragment>
     <fragment
