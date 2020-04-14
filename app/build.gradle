@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -43,4 +44,7 @@ dependencies {
 
     //Material
     implementation 'com.google.android.material:material:1.1.0-beta02'
+
+    //Firestore
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 }

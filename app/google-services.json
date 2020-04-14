@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "490314822095",
+    "firebase_url": "https://kitcheneaten.firebaseio.com",
+    "project_id": "kitcheneaten",
+    "storage_bucket": "kitcheneaten.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490314822095:android:3d6abcef2ab964065f62ba",
+        "android_client_info": {
+          "package_name": "com.itb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490314822095-nqd3tg8fo327l4kevvm8tgvq7sr6f9nk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyeMvavgVzQXk0CjPTcf4aCCS3YPmW4bk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490314822095-nqd3tg8fo327l4kevvm8tgvq7sr6f9nk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
