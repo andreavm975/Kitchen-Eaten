@@ -57,6 +57,7 @@ public class RestaurantsListFragment extends Fragment {
 
         myAdapter = new RestaurantAdapter();
         myRecyclerView.setAdapter(myAdapter);
+        myAdapter.setListener(this::viewRestaurant);
 
         mViewModel.getAllRestaurants();
         LiveData<ArrayList<Restaurant>> restaurants = mViewModel.getRestaurants();
@@ -65,14 +66,22 @@ public class RestaurantsListFragment extends Fragment {
 
     }
 
-    private void restaurantsChanged(ArrayList<Restaurant> restaurants) {
-
-        myAdapter.setRestaurants(restaurants);
-    }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
     }
+
+    private void restaurantsChanged(ArrayList<Restaurant> restaurants) {
+
+        myAdapter.setRestaurants(restaurants);
+    }
+
+    private void viewRestaurant(Restaurant restaurant) {
+
+        
+
+    }
+
+
 }

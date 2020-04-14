@@ -20,6 +20,7 @@ public class RestaurantsListViewModel extends AndroidViewModel {
     public RestaurantsListViewModel(@NonNull Application application) {
         super(application);
         db = new MyDatabase();
+
     }
 
     public void getAllRestaurants() {

@@ -34,11 +34,16 @@ public class MyDatabase {
                         Restaurant restaurant = document.toObject(Restaurant.class);
                         aux.add(restaurant);
                     }
-
                     restaurants.postValue(aux);
                 }
             }
         });
+    }
+
+    public void getRestaurantFromName() {
+
+        db.collection("restaurantes").document();
+
     }
 
 

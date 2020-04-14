@@ -16,6 +16,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
 
@@ -23,6 +24,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     // VARIABLES
 
     List<Restaurant> restaurants;
+    OnRestaurantClickListener listener;
 
     public RestaurantAdapter() {
     }
@@ -58,6 +60,10 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         notifyDataSetChanged();
     }
 
+    public void setListener(OnRestaurantClickListener listener) {
+        this.listener = listener;
+    }
+
     public class RestaurantViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.imgRestaurant)
@@ -73,5 +79,17 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+
+        @OnClick(R.id.item_layout)
+        public void onRestaurantClicked() {
+            Restaurant restaurant = restaurants.get(getAdapterPosition());
+            listener.onRestaurantClicked(restaurant);
+
+        }
     }
+
+    public interface OnRestaurantClickListener {
+        void onRestaurantClicked(Restaurant restaurant);
+    }
+
 }
