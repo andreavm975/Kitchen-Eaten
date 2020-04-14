@@ -1,7 +1,10 @@
 package com.itb.kitcheneaten.fragments;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.annotation.SuppressLint;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,14 +12,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.itb.kitcheneaten.R;
+import com.itb.kitcheneaten.model.Restaurant;
 
 import java.util.Objects;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -24,6 +33,25 @@ public class RestaurantDetailFragment extends Fragment {
 
     private RestaurantDetailViewModel mViewModel;
     private String name;
+
+    @BindView(R.id.ivRestaurantDetail)
+    ImageView ivRestaurant;
+
+    @BindView(R.id.tvName)
+    TextView tvName;
+
+    @BindView(R.id.tvAddress)
+    TextView tvAddress;
+
+    @BindView(R.id.tvTelf)
+    TextView tvTelf;
+
+    @BindView(R.id.tvDisponibility)
+    TextView tvDisponibility;
+
+    @BindView(R.id.swipe_layout_detail)
+    SwipeRefreshLayout loading;
+
 
     public static RestaurantDetailFragment newInstance() {
         return new RestaurantDetailFragment();
@@ -44,12 +72,36 @@ public class RestaurantDetailFragment extends Fragment {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(RestaurantDetailViewModel.class);
-        // TODO: Use the ViewModel
+        loadData();
+        loading.setColorSchemeColors(R.color.colorPrimaryDark);
+        loading.setProgressBackgroundColorSchemeColor(R.color.colorAccent);
+
+        loading.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadData();
+            }
+        });
     }
+
+    private void loadData() {
+        loading.setRefreshing(true);
+        LiveData<Restaurant> restaurant = mViewModel.getRestaurant(name);
+        restaurant.observe(this, this::onRestaurantChanged);
+    }
+
+    private void onRestaurantChanged(Restaurant restaurant) {
+        tvName.setText(restaurant.getName());
+        tvAddress.setText(restaurant.getAddress());
+        tvTelf.setText(restaurant.getTelf());
+        loading.setRefreshing(false);
+    }
+
 
     @OnClick(R.id.btnReservation)
     public void onReservationClicked(){

@@ -68,7 +68,7 @@ public class RestaurantsListFragment extends Fragment {
         myAdapter.setListener(this::viewRestaurant);
 
 
-        loading.setRefreshing(true);
+
         loadData();
         loading.setColorSchemeColors(R.color.colorPrimaryDark);
         loading.setProgressBackgroundColorSchemeColor(R.color.colorAccent);
@@ -84,7 +84,7 @@ public class RestaurantsListFragment extends Fragment {
     }
 
     public void loadData() {
-
+        loading.setRefreshing(true);
         mViewModel.getAllRestaurants();
         LiveData<ArrayList<Restaurant>> restaurants = mViewModel.getRestaurants();
         restaurants.observe(this, this::restaurantsChanged);

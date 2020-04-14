@@ -23,7 +23,6 @@ public class RestaurantsListViewModel extends AndroidViewModel {
     }
 
     public void getAllRestaurants() {
-
         db.getAllRestaurantsFromBBDD();
         restaurants = db.getRestaurants();
     }
