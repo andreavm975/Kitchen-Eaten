@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_restaurantDetailFragment_to_tableReserveFragment"
             app:destination="@id/tableReserveFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/tableReserveFragment"
@@ -31,6 +34,9 @@
         <action
             android:id="@+id/action_tableReserveFragment_to_reserveCompletedFragment"
             app:destination="@id/reserveCompletedFragment" />
+        <argument
+            android:name="restName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/reserveCompletedFragment"
