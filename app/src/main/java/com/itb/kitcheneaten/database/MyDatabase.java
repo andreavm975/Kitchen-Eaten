@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -18,6 +19,7 @@ public class MyDatabase {
     FirebaseFirestore db;
     MutableLiveData<ArrayList<Restaurant>> restaurants = new MutableLiveData<>();
     ArrayList<Restaurant> aux = new ArrayList<>();
+    MutableLiveData<Restaurant> restaurant = new MutableLiveData<>();
 
 
     public MyDatabase() {
@@ -42,14 +44,28 @@ public class MyDatabase {
         aux.clear();
     }
 
-    public void getRestaurantFromName() {
+    public void getRestaurantFromName(String name) {
 
-        db.collection("restaurantes").document();
+        db.collection("restaurantes").document(name).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null && document.exists()) {
+                        restaurant.postValue(document.toObject(Restaurant.class));
+                    }
+                }
+            }
+        });
 
     }
 
 
     public LiveData<ArrayList<Restaurant>> getRestaurants() {
         return restaurants;
+    }
+
+    public LiveData<Restaurant> getRestaurant() {
+        return restaurant;
     }
 }
