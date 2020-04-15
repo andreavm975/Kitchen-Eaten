@@ -23,12 +23,15 @@ public class MyDatabase {
 
 
     public MyDatabase() {
+
         db = FirebaseFirestore.getInstance();
+
     }
 
     public void getAllRestaurantsFromBBDD() {
 
         db.collection("restaurantes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -40,13 +43,16 @@ public class MyDatabase {
 
                 }
             }
+
         });
         aux.clear();
+
     }
 
     public void getRestaurantFromName(String name) {
 
         db.collection("restaurantes").document(name.toLowerCase()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -56,10 +62,10 @@ public class MyDatabase {
                     }
                 }
             }
+
         });
 
     }
-
 
     public LiveData<ArrayList<Restaurant>> getRestaurants() {
         return restaurants;
