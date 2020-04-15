@@ -11,7 +11,7 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(String name, String address, String telf, int nTables, String image) {
+    public Restaurant(String name, String address, String telf, Integer nTables, String image) {
         this.name = name;
         this.address = address;
         this.telf = telf;
@@ -59,7 +59,5 @@ public class Restaurant {
         return nTables;
     }
 
-    public void setnTables(int nTables) {
-        this.nTables = nTables;
-    }
+
 }

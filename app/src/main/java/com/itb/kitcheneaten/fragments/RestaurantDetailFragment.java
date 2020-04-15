@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.itb.kitcheneaten.R;
 import com.itb.kitcheneaten.model.Restaurant;
 
@@ -67,7 +69,7 @@ public class RestaurantDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        if(getArguments()!=null){
+        if (getArguments() != null) {
             name = RestaurantDetailFragmentArgs.fromBundle(getArguments()).getName();
         }
     }
@@ -97,6 +99,9 @@ public class RestaurantDetailFragment extends Fragment {
     }
 
     private void onRestaurantChanged(Restaurant restaurant) {
+        Glide.with(getContext())
+                .load(restaurant.getImage())
+                .into(ivRestaurant);
         tvName.setText(restaurant.getName());
         tvAddress.setText(restaurant.getAddress());
         tvTelf.setText(restaurant.getTelf());
@@ -105,7 +110,7 @@ public class RestaurantDetailFragment extends Fragment {
 
 
     @OnClick(R.id.btnReservation)
-    public void onReservationClicked(){
+    public void onReservationClicked() {
         NavDirections navigation = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToTableReserveFragment(name);
         Navigation.findNavController(Objects.requireNonNull(getView())).navigate(navigation);
     }

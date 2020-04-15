@@ -43,6 +43,8 @@ public class RestaurantsListFragment extends Fragment {
 
     private RestaurantsListViewModel mViewModel;
 
+    private LiveData<ArrayList<Restaurant>> restaurants;
+
     public static RestaurantsListFragment newInstance() {
         return new RestaurantsListFragment();
     }
@@ -63,10 +65,9 @@ public class RestaurantsListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         myRecyclerView.setLayoutManager(linearLayoutManager);
 
-        myAdapter = new RestaurantAdapter();
+        myAdapter = new RestaurantAdapter(getContext());
         myRecyclerView.setAdapter(myAdapter);
         myAdapter.setListener(this::viewRestaurant);
-
 
 
         loadData();
@@ -85,7 +86,7 @@ public class RestaurantsListFragment extends Fragment {
     public void loadData() {
         loading.setRefreshing(true);
         mViewModel.getAllRestaurants();
-        LiveData<ArrayList<Restaurant>> restaurants = mViewModel.getRestaurants();
+        restaurants = mViewModel.getRestaurants();
         restaurants.observe(this, this::restaurantsChanged);
     }
 

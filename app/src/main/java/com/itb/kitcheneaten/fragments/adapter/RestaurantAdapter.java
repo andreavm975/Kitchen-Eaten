@@ -1,5 +1,6 @@
 package com.itb.kitcheneaten.fragments.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.itb.kitcheneaten.R;
 import com.itb.kitcheneaten.model.Restaurant;
 
@@ -22,9 +24,13 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
 
     // VARIABLES
-
+    private Context myContext;
     List<Restaurant> restaurants;
     OnRestaurantClickListener listener;
+
+    public RestaurantAdapter(Context context) {
+        this.myContext = context;
+    }
 
     public RestaurantAdapter() {
     }
@@ -40,7 +46,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     @Override
     public void onBindViewHolder(@NonNull RestaurantViewHolder holder, int position) {
         Restaurant restaurant = restaurants.get(position);
-        //holder.imageRestaurant.setImageURI();
+        Glide.with(myContext)
+                .load(restaurant.getImage())
+                .into(holder.imageRestaurant);
         holder.name.setText(restaurant.getName());
         holder.address.setText(restaurant.getAddress());
     }
