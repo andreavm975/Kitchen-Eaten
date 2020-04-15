@@ -6,15 +6,29 @@ public class Restaurant {
     private String address;
     private String telf;
     private Integer nTables;
+    private String image;
 
     public Restaurant() {
     }
 
-    public Restaurant(String name, String address, String telf, int nTables) {
+    public Restaurant(String name, String address, String telf, int nTables, String image) {
         this.name = name;
         this.address = address;
         this.telf = telf;
         this.nTables = nTables;
+        this.image = image;
+    }
+
+    public void setnTables(Integer nTables) {
+        this.nTables = nTables;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getName() {

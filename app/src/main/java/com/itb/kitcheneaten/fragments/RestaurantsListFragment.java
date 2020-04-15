@@ -80,7 +80,6 @@ public class RestaurantsListFragment extends Fragment {
             }
         });
 
-
     }
 
     public void loadData() {
