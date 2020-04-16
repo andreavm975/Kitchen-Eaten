@@ -1,22 +1,28 @@
 package com.itb.kitcheneaten.fragments;
 
-import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.itb.kitcheneaten.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class TableReserveFragment extends Fragment {
 
     private TableReserveViewModel mViewModel;
+    private String name;
+
+    @BindView(R.id.tvRestaurantName)
+    TextView restName;
 
     public static TableReserveFragment newInstance() {
         return new TableReserveFragment();
@@ -35,4 +41,15 @@ public class TableReserveFragment extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(this, view);
+        if (getArguments() != null) {
+            name = TableReserveFragmentArgs.fromBundle(getArguments()).getRestName();
+        }
+
+        restName.setText(name);
+
+    }
 }

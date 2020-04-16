@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.TableReserveFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragments.TableReserveFragment">
 
 
     <TextView
@@ -24,7 +24,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/etRestaurantName"
+        android:id="@+id/tvRestaurantName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -59,38 +59,38 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilTelf"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Phone"
-        android:id="@+id/tilTelf"
-        android:layout_weight="1"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:hint="Phone">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etTelf"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/futura"
-            android:inputType="textPersonName" />
+            android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilDate"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Date"
-        android:id="@+id/tilDate"
-        android:layout_weight="1"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:hint="Date">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etDate"
@@ -102,17 +102,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilHour"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Hour"
-        android:id="@+id/tilHour"
-        android:layout_weight="1"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:hint="Hour">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etHour"
@@ -124,17 +124,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilDiners"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Diners' number"
-        android:id="@+id/tilDiners"
-        android:layout_weight="1"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:hint="Diners' number">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etDiners"
