@@ -48,8 +48,8 @@ public class RestaurantDetailFragment extends Fragment {
     @BindView(R.id.tvTelf)
     TextView tvTelf;
 
-    @BindView(R.id.tvDisponibility)
-    TextView tvDisponibility;
+   /* @BindView(R.id.tvDisponibility)
+    TextView tvDisponibility;*/
 
     @BindView(R.id.swipe_layout_detail)
     SwipeRefreshLayout loading;

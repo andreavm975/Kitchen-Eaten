@@ -74,12 +74,7 @@ public class RestaurantsListFragment extends Fragment {
         loading.setColorSchemeColors(R.color.colorPrimaryDark);
         loading.setProgressBackgroundColorSchemeColor(R.color.colorAccent);
 
-        loading.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                loadData();
-            }
-        });
+        loading.setOnRefreshListener(this::loadData);
 
     }
 
