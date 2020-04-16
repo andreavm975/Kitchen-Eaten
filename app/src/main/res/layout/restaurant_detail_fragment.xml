@@ -31,7 +31,7 @@
                     android:id="@+id/ivRestaurantDetail"
                     android:layout_width="match_parent"
 
-                    android:layout_height="200dp"
+                    android:layout_height="250dp"
                     android:layout_marginTop="0dp"
                     android:contentDescription="@string/restaurant_image"
                     android:scaleType="centerCrop"
@@ -64,8 +64,18 @@
                     android:fontFamily="@font/futura"
                     android:text="Lorem ipsum dolor sit amet. Nulla felis ex. Vestibulum ante ipsum primis in faucibus orci. Maecenas tristique, metus a fermentum vestibulum, nisl mauris rhoncus turpis, id rhoncus felis ligula ac elit. Etiam vitae bibendum nulla. Donec sed dignissim risus. Sed euismod et ex nec posuere. Aliquam a suscipit ex. Quisque fermentum fringilla condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur pulvinar dapibus orci, ac posuere tortor ultrices eget. Quisque egestas dignissim risus, eu feugiat enim ultrices aliquam. Sed tortor magna, consequat quis convallis at, congue eget dui. Curabitur id elit bibendum, feugiat dolor in, faucibus velit."
                     android:textSize="16sp"
-                    android:textStyle="bold"
                     tools:text="Description" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/futura"
+                    android:text="Address" />
 
                 <TextView
                     android:id="@+id/tvAddress"
@@ -73,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/futura"
@@ -105,36 +115,24 @@
                     android:textStyle="bold"
                     tools:text="Telephone" />
 
-                <TextView
-                    android:id="@+id/tvDisponibility"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/futura"
-                    android:textStyle="bold"
-                    tools:text="Disponibility" />
             </LinearLayout>
         </ScrollView>
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/btnReservation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#53BBAD"
-            android:fontFamily="@font/futura"
-            android:text="@string/table_reservation"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnReservation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#53BBAD"
+        android:fontFamily="@font/futura"
+        android:text="@string/table_reservation"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
