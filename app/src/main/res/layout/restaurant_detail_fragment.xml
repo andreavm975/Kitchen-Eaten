@@ -136,7 +136,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#53BBAD"
+        android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/futura"
         android:text="@string/table_reservation"
         android:textAlignment="center"
