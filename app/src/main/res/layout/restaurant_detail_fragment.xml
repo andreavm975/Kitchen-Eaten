@@ -11,9 +11,13 @@
     tools:context=".fragments.RestaurantDetailFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
         android:id="@+id/swipe_layout_detail"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -48,7 +52,7 @@
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/earthquest"
                     android:textAllCaps="false"
-                    android:textColor="#4B4B4B"
+                    android:textColor="@color/colorAccent"
                     android:textSize="48sp"
                     tools:text="Name" />
 
@@ -63,6 +67,7 @@
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/futura"
                     android:text="Lorem ipsum dolor sit amet. Nulla felis ex. Vestibulum ante ipsum primis in faucibus orci. Maecenas tristique, metus a fermentum vestibulum, nisl mauris rhoncus turpis, id rhoncus felis ligula ac elit. Etiam vitae bibendum nulla. Donec sed dignissim risus. Sed euismod et ex nec posuere. Aliquam a suscipit ex. Quisque fermentum fringilla condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur pulvinar dapibus orci, ac posuere tortor ultrices eget. Quisque egestas dignissim risus, eu feugiat enim ultrices aliquam. Sed tortor magna, consequat quis convallis at, congue eget dui. Curabitur id elit bibendum, feugiat dolor in, faucibus velit."
+                    android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     tools:text="Description" />
 
@@ -75,7 +80,8 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/futura"
-                    android:text="Address" />
+                    android:text="Address"
+                    android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvAddress"
@@ -87,6 +93,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/futura"
+                    android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     tools:text="Address" />
@@ -100,7 +107,8 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/futura"
-                    android:text="@string/telephone" />
+                    android:text="@string/telephone"
+                    android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/tvTelf"
@@ -111,7 +119,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginBottom="80dp"
                     android:fontFamily="@font/futura"
+                    android:textColor="@color/colorAccent"
                     android:textStyle="bold"
                     tools:text="Telephone" />
 
