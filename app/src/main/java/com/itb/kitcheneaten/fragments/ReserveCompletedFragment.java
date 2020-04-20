@@ -48,8 +48,11 @@ public class ReserveCompletedFragment extends Fragment {
             nDinners = ReserveCompletedFragmentArgs.fromBundle(getArguments()).getNDinners();
             date = ReserveCompletedFragmentArgs.fromBundle(getArguments()).getDate();
         }
-
-        reservationCompleted.setText("¡Congratulations! You have made a reservation for "+nDinners+" dinners in " +name+ " for "+date+"." );
+        if(nDinners.equals("1")){
+            reservationCompleted.setText("¡Congratulations! You have made a reservation for one dinner in " + name + " for " + date + ".");
+        }else {
+            reservationCompleted.setText("¡Congratulations! You have made a reservation for " + nDinners + " dinners in " + name + " for " + date + ".");
+        }
     }
 
     @Override
