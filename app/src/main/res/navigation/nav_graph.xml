@@ -45,5 +45,15 @@
         android:id="@+id/reserveCompletedFragment"
         android:name="com.itb.kitcheneaten.fragments.ReserveCompletedFragment"
         android:label="reserve_completed_fragment"
-        tools:layout="@layout/reserve_completed_fragment" />
+        tools:layout="@layout/reserve_completed_fragment" >
+        <argument
+            android:name="restName"
+            app:argType="string" />
+        <argument
+            android:name="nDinners"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
+    </fragment>
 </navigation>

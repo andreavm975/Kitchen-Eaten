@@ -25,6 +25,7 @@ import com.itb.kitcheneaten.model.Reservation;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,7 +37,7 @@ public class TableReserveFragment extends Fragment {
     private String name;
     private int capacity;
 
-    private Date reservationDate;
+    private String reservationDate;
     @BindView(R.id.tilName)
     TextInputLayout tilName;
 
@@ -108,9 +109,9 @@ public class TableReserveFragment extends Fragment {
     private void doOnDateSelected(Long aLong) {
         String pattern = "dd/MM/yyyy";
         DateFormat df= new SimpleDateFormat(pattern);
-        reservationDate =new Date(aLong);
-        String reservation=df.format(reservationDate);
-        etDate.setText(reservation);
+        Date reservation =new Date(aLong);
+        reservationDate=df.format(reservation);
+        etDate.setText(reservationDate);
     }
 
 
@@ -180,7 +181,10 @@ public class TableReserveFragment extends Fragment {
                     switch (which){
                         case DialogInterface.BUTTON_POSITIVE:
                             mViewModel.uploadReservation(name, reservation);
-                            Navigation.findNavController(getView()).navigate(R.id.action_tableReserveFragment_to_reserveCompletedFragment);
+                            NavDirections navigation = TableReserveFragmentDirections.actionTableReserveFragmentToReserveCompletedFragment(name,etDinners.getText().toString(),reservationDate);
+                            Navigation.findNavController(getView()).navigate(navigation);
+
+
                             break;
 
                         case DialogInterface.BUTTON_NEGATIVE:
@@ -190,7 +194,7 @@ public class TableReserveFragment extends Fragment {
             };
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage("Are you sure?").setPositiveButton("Accept", dialogClickListener)
+            builder.setMessage("We have availability. Do you want to confirm the reservation?").setPositiveButton("Accept", dialogClickListener)
                     .setNegativeButton("Cancel", dialogClickListener).show();
         } else{
             Toast.makeText(getActivity(), "Not available date.",
