@@ -35,6 +35,7 @@ public class RestaurantDetailFragment extends Fragment {
 
     private RestaurantDetailViewModel mViewModel;
     private String name;
+    private int capacity;
 
     @BindView(R.id.ivRestaurantDetail)
     ImageView ivRestaurant;
@@ -106,13 +107,14 @@ public class RestaurantDetailFragment extends Fragment {
         tvName.setText(restaurant.getName());
         tvAddress.setText(restaurant.getAddress());
         tvTelf.setText(restaurant.getTelf());
+        capacity= restaurant.getCapacity();
         loading.setRefreshing(false);
     }
 
 
     @OnClick(R.id.btnReservation)
     public void onReservationClicked() {
-        NavDirections navigation = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToTableReserveFragment(name);
+        NavDirections navigation = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToTableReserveFragment(name,capacity);
         Navigation.findNavController(Objects.requireNonNull(getView())).navigate(navigation);
     }
 }

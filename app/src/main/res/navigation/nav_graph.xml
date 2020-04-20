@@ -37,6 +37,9 @@
         <argument
             android:name="restName"
             app:argType="string" />
+        <argument
+            android:name="restCapacity"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/reserveCompletedFragment"

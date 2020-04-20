@@ -115,7 +115,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDiners"
+            android:id="@+id/tilDinners"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,10 +127,9 @@
             android:hint="Diners' number">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDiners"
+                android:id="@+id/etDinners"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:focusable="false"
                 android:fontFamily="@font/futura"
                 android:inputType="number"
                 android:textColor="@color/colorAccent" />

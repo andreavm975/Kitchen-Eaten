@@ -1,26 +1,33 @@
 package com.itb.kitcheneaten.model;
 
+import java.util.ArrayList;
+
 public class Restaurant {
 
     private String name;
     private String address;
     private String telf;
-    private Integer nTables;
+    private Integer capacity;
     private String image;
+    private ArrayList<Reservation> reservations;
 
     public Restaurant() {
     }
 
-    public Restaurant(String name, String address, String telf, Integer nTables, String image) {
+    public Restaurant(String name, String address, String telf, Integer capacity, String image) {
         this.name = name;
         this.address = address;
         this.telf = telf;
-        this.nTables = nTables;
+        this.capacity = capacity;
         this.image = image;
     }
 
-    public void setnTables(Integer nTables) {
-        this.nTables = nTables;
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 
     public String getImage() {
@@ -55,9 +62,12 @@ public class Restaurant {
         this.telf = telf;
     }
 
-    public int getnTables() {
-        return nTables;
+
+    public ArrayList<Reservation> getReservations() {
+        return reservations;
     }
 
-
+    public void setReservations(ArrayList<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 }
