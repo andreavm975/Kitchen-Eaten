@@ -1,18 +1,16 @@
 package com.itb.kitcheneaten.model;
 
-import java.util.Date;
-
 public class Reservation {
-    private Date date;
+    private String date;
     private Integer nDinners;
     private String name;
     private String telf;
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
