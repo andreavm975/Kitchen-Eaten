@@ -11,10 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_ke_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service
+            android:name=".services.FireBaseService"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +31,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
+
+
     </application>
 
 </manifest>
