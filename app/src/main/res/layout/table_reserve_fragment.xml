@@ -57,6 +57,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
+            app:errorEnabled="true"
             android:hint="Name">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -79,6 +80,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
+            app:errorEnabled="true"
             android:hint="Phone">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -101,6 +103,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
+            app:errorEnabled="true"
             android:hint="Date">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -124,6 +127,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
+            app:errorEnabled="true"
             android:hint="Diners' number">
 
             <com.google.android.material.textfield.TextInputEditText

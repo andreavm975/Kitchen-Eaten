@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.itb.kitcheneaten.R;
 import com.itb.kitcheneaten.model.Reservation;
 
@@ -36,6 +37,17 @@ public class TableReserveFragment extends Fragment {
     private int capacity;
 
     private Date reservationDate;
+    @BindView(R.id.tilName)
+    TextInputLayout tilName;
+
+    @BindView(R.id.tilDate)
+    TextInputLayout tilDate;
+
+    @BindView(R.id.tilDinners)
+    TextInputLayout tilDinners;
+
+    @BindView(R.id.tilTelf)
+    TextInputLayout tilTelf;
 
     @BindView(R.id.tvRestaurantName)
     TextView restName;
@@ -113,9 +125,52 @@ public class TableReserveFragment extends Fragment {
 
     @OnClick(R.id.btnCheck)
     public void onCheckClicked(){
-        getDataFromUser();
-        mViewModel.isAvailable(name, capacity,reservation).observe(this, this::onAvailableChanged);
+
+        if(validate()) {
+            getDataFromUser();
+            mViewModel.isAvailable(name, capacity, reservation).observe(this, this::onAvailableChanged);
+        }
     }
+
+    private boolean validate() {
+        boolean valid=true;
+        tilName.setErrorEnabled(false);
+        tilDate.setErrorEnabled(false);
+        tilDinners.setErrorEnabled(false);
+        tilTelf.setErrorEnabled(false);
+
+        if(etName.getText().toString().isEmpty()){
+            valid=false;
+            tilName.setError("Required field");
+            scrollTo(tilName);
+        }
+
+        if(etDate.getText().toString().isEmpty()){
+            valid=false;
+            tilDate.setError("Required field");
+            scrollTo(tilDate);
+        }
+
+        if(etDinners.getText().toString().isEmpty()){
+            valid=false;
+            tilDinners.setError("Required field");
+            scrollTo(tilDinners);
+        }
+
+        if(etTelf.getText().toString().isEmpty()){
+            valid=false;
+            tilTelf.setError("Required field");
+            scrollTo(tilTelf);
+        }
+
+        return valid;
+
+    }
+
+    private void scrollTo(TextInputLayout targetView) {
+        targetView.getParent().requestChildFocus(targetView,targetView);
+    }
+
 
     private void onAvailableChanged(Boolean aBoolean) {
         if(aBoolean){
