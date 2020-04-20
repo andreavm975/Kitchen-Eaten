@@ -35,6 +35,8 @@ public class TableReserveFragment extends Fragment {
     private String name;
     private int capacity;
 
+    private Date reservationDate;
+
     @BindView(R.id.tvRestaurantName)
     TextView restName;
 
@@ -94,7 +96,7 @@ public class TableReserveFragment extends Fragment {
     private void doOnDateSelected(Long aLong) {
         String pattern = "dd/MM/yyyy";
         DateFormat df= new SimpleDateFormat(pattern);
-        Date reservationDate =new Date(aLong);
+        reservationDate =new Date(aLong);
         String reservation=df.format(reservationDate);
         etDate.setText(reservation);
     }
@@ -102,8 +104,7 @@ public class TableReserveFragment extends Fragment {
 
     public void getDataFromUser(){
         reservation = new Reservation();
-        Date date= new Date(etDate.getText().toString());
-        reservation.setDate(date);
+        reservation.setDate(reservationDate);
         reservation.setName(etName.getText().toString());
         reservation.setnDinners(Integer.parseInt(etDinners.getText().toString()));
         reservation.setTelf(etTelf.getText().toString());

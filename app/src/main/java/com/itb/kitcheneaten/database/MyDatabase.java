@@ -112,6 +112,8 @@ public class MyDatabase {
                             }
                             if(totalDinners[0]+reservation.getnDinners()<=capacity){
                                 available.setValue(true);
+                            } else{
+                                available.setValue(false);
                             }
                         }
                     }
