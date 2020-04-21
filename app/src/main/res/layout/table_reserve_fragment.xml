@@ -50,7 +50,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_weight="0.5"
         android:hint="Name"
         app:errorEnabled="true">
@@ -75,7 +74,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_weight="0.5"
         android:hint="Phone"
         app:errorEnabled="true">
@@ -101,7 +99,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_weight="0.5"
         android:hint="Diners' number"
         app:errorEnabled="true">
@@ -125,7 +122,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_weight="0.5"
         android:hint="Date"
         app:errorEnabled="true">
@@ -146,7 +142,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="16dp"
         android:layout_weight="1"
