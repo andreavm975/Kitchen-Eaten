@@ -11,6 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:background="@color/colorPrimaryDark"
         android:fontFamily="@font/futura"
         android:paddingStart="20dp"
@@ -33,7 +34,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_weight="9"
+        android:layout_weight="3"
         android:fontFamily="@font/earthquest"
         android:text="Restaurants Name"
         android:textColor="@color/colorAccent"
@@ -50,7 +51,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:hint="Name"
         app:errorEnabled="true">
 
@@ -75,7 +76,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:hint="Phone"
         app:errorEnabled="true">
 
@@ -101,7 +102,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:hint="Diners' number"
         app:errorEnabled="true">
 
@@ -125,7 +126,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:hint="Date"
         app:errorEnabled="true">
 
