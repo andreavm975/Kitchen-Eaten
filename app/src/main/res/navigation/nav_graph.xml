@@ -58,5 +58,8 @@
         <argument
             android:name="date"
             app:argType="string" />
+        <action
+            android:id="@+id/action_reserveCompletedFragment_to_restaurantsListFragment"
+            app:destination="@id/restaurantsListFragment" />
     </fragment>
 </navigation>

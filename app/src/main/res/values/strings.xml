@@ -7,4 +7,10 @@
     <string name="check_availability">Check Availability</string>
     <string name="logo_image">Logo Image</string>
     <string name="texto_falso">Lorem ipsum dolor sit amet. Nulla felis ex. Vestibulum ante ipsum primis in faucibus orci. Maecenas tristique, metus a fermentum vestibulum, nisl mauris rhoncus turpis, id rhoncus felis ligula ac elit. Etiam vitae bibendum nulla. Donec sed dignissim risus. Sed euismod et ex nec posuere. Aliquam a suscipit ex. Quisque fermentum fringilla condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur pulvinar dapibus orci, ac posuere tortor ultrices eget. Quisque egestas dignissim risus, eu feugiat enim ultrices aliquam. Sed tortor magna, consequat quis convallis at, congue eget dui. Curabitur id elit bibendum, feugiat dolor in, faucibus velit.</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="date">Date</string>
+    <string name="diners_number">Diners\' number</string>
+    <string name="phone">Phone</string>
+    <string name="name">Name</string>
+    <string name="restaurants_name">Restaurants Name</string>
 </resources>

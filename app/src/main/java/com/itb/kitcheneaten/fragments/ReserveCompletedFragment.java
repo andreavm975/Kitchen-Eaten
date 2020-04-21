@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +17,11 @@ import android.widget.TextView;
 
 import com.itb.kitcheneaten.R;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ReserveCompletedFragment extends Fragment {
 
@@ -49,9 +53,9 @@ public class ReserveCompletedFragment extends Fragment {
             date = ReserveCompletedFragmentArgs.fromBundle(getArguments()).getDate();
         }
         if(nDinners.equals("1")){
-            reservationCompleted.setText("¡Congratulations! You have made a reservation for one dinner in " + name + " for " + date + ".");
+            reservationCompleted.setText("¡Congratulations!\nYou have made a reservation for one dinner in " + name + " for " + date + ".");
         }else {
-            reservationCompleted.setText("¡Congratulations! You have made a reservation for " + nDinners + " dinners in " + name + " for " + date + ".");
+            reservationCompleted.setText("¡Congratulations!\nYou have made a reservation for " + nDinners + " dinners in " + name + " for " + date + ".");
         }
     }
 
@@ -60,6 +64,11 @@ public class ReserveCompletedFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ReserveCompletedViewModel.class);
 
+    }
+
+    @OnClick(R.id.btnBackHome)
+    public void onBackClicked(){
+        Navigation.findNavController(Objects.requireNonNull(getView())).navigate(R.id.action_reserveCompletedFragment_to_restaurantsListFragment);
     }
 
 }

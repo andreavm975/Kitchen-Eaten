@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_weight="1"
         android:background="@color/colorPrimaryDark"
         android:fontFamily="@font/futura"
@@ -37,7 +37,7 @@
         android:layout_weight="3"
         android:fontFamily="@font/earthquest"
         android:paddingTop="10dp"
-        android:text="Restaurants Name"
+        android:text="@string/restaurants_name"
         android:textColor="@color/colorAccent"
         android:textSize="40sp" />
 
@@ -52,7 +52,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_weight="0.5"
-        android:hint="Name"
+        android:hint="@string/name"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -76,7 +76,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_weight="0.5"
-        android:hint="Phone"
+        android:hint="@string/phone"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -101,7 +101,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_weight="0.5"
-        android:hint="Diners' number"
+        android:hint="@string/diners_number"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -124,7 +124,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_weight="0.5"
-        android:hint="Date"
+        android:hint="@string/date"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
