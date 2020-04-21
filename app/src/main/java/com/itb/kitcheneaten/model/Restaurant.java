@@ -9,6 +9,7 @@ public class Restaurant {
     private String telf;
     private Integer capacity;
     private String image;
+    private ArrayList<Integer> schedule;
     private ArrayList<Reservation> reservations;
 
     public Restaurant() {
@@ -20,6 +21,14 @@ public class Restaurant {
         this.telf = telf;
         this.capacity = capacity;
         this.image = image;
+    }
+
+    public ArrayList<Integer> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(ArrayList<Integer> schedule) {
+        this.schedule = schedule;
     }
 
     public Integer getCapacity() {

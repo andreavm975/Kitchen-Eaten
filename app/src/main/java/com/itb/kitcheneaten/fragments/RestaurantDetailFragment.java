@@ -1,30 +1,27 @@
 package com.itb.kitcheneaten.fragments;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.annotation.SuppressLint;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.bumptech.glide.Glide;
 import com.itb.kitcheneaten.R;
 import com.itb.kitcheneaten.model.Restaurant;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -36,6 +33,7 @@ public class RestaurantDetailFragment extends Fragment {
     private RestaurantDetailViewModel mViewModel;
     private String name;
     private int capacity;
+    private ArrayList<Integer> schedule;
 
     @BindView(R.id.ivRestaurantDetail)
     ImageView ivRestaurant;
@@ -48,9 +46,6 @@ public class RestaurantDetailFragment extends Fragment {
 
     @BindView(R.id.tvTelf)
     TextView tvTelf;
-
-   /* @BindView(R.id.tvDisponibility)
-    TextView tvDisponibility;*/
 
     @BindView(R.id.swipe_layout_detail)
     SwipeRefreshLayout loading;
@@ -107,14 +102,15 @@ public class RestaurantDetailFragment extends Fragment {
         tvName.setText(restaurant.getName());
         tvAddress.setText(restaurant.getAddress());
         tvTelf.setText(restaurant.getTelf());
-        capacity= restaurant.getCapacity();
+        capacity = restaurant.getCapacity();
+        schedule = restaurant.getSchedule();
         loading.setRefreshing(false);
     }
 
 
     @OnClick(R.id.btnReservation)
     public void onReservationClicked() {
-        NavDirections navigation = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToTableReserveFragment(name,capacity);
+        NavDirections navigation = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToTableReserveFragment(name, capacity, schedule);
         Navigation.findNavController(Objects.requireNonNull(getView())).navigate(navigation);
     }
 }

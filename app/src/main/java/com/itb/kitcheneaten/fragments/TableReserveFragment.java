@@ -16,26 +16,25 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
-import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.itb.kitcheneaten.R;
 import com.itb.kitcheneaten.model.Reservation;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
+import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TableReserveFragment extends Fragment {
+public class TableReserveFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     private TableReserveViewModel mViewModel;
     private String name;
     private int capacity;
+    private List<Integer> schedule;
 
     private String reservationDate;
     @BindView(R.id.tilName)
@@ -90,32 +89,38 @@ public class TableReserveFragment extends Fragment {
         if (getArguments() != null) {
             name = TableReserveFragmentArgs.fromBundle(getArguments()).getRestName();
             capacity = TableReserveFragmentArgs.fromBundle(getArguments()).getRestCapacity();
-
+            schedule = TableReserveFragmentArgs.fromBundle(getArguments()).getSchedule();
         }
 
         restName.setText(name);
 
     }
 
-    @OnClick({R.id.tilDate,R.id.etDate})
-    public void onDateClicked(){
-        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
+    @OnClick({R.id.tilDate, R.id.etDate})
+    public void onDateClicked() {
+
+
+        showDatePicker();
+
+
+
+      /*  MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("Reservation Date");
         MaterialDatePicker<Long> picker = builder.build();
         picker.addOnPositiveButtonClickListener(this::doOnDateSelected);
-        picker.show(getFragmentManager(), picker.toString());
+        picker.show(getFragmentManager(), picker.toString());*/
     }
 
-    private void doOnDateSelected(Long aLong) {
+/*    private void doOnDateSelected(Long aLong) {
         String pattern = "dd/MM/yyyy";
-        DateFormat df= new SimpleDateFormat(pattern);
-        Date reservation =new Date(aLong);
-        reservationDate=df.format(reservation);
+        DateFormat df = new SimpleDateFormat(pattern);
+        Date reservation = new Date(aLong);
+        reservationDate = df.format(reservation);
         etDate.setText(reservationDate);
-    }
+    }*/
 
 
-    public void getDataFromUser(){
+    public void getDataFromUser() {
         reservation = new Reservation();
         reservation.setDate(reservationDate);
         reservation.setName(etName.getText().toString());
@@ -125,41 +130,41 @@ public class TableReserveFragment extends Fragment {
 
 
     @OnClick(R.id.btnCheck)
-    public void onCheckClicked(){
+    public void onCheckClicked() {
 
-        if(validate()) {
+        if (validate()) {
             getDataFromUser();
             mViewModel.isAvailable(name, capacity, reservation).observe(this, this::onAvailableChanged);
         }
     }
 
     private boolean validate() {
-        boolean valid=true;
+        boolean valid = true;
         tilName.setErrorEnabled(false);
         tilDate.setErrorEnabled(false);
         tilDinners.setErrorEnabled(false);
         tilTelf.setErrorEnabled(false);
 
-        if(etName.getText().toString().isEmpty()){
-            valid=false;
+        if (etName.getText().toString().isEmpty()) {
+            valid = false;
             tilName.setError("Required field");
             scrollTo(tilName);
         }
 
-        if(etDate.getText().toString().isEmpty()){
-            valid=false;
+        if (etDate.getText().toString().isEmpty()) {
+            valid = false;
             tilDate.setError("Required field");
             scrollTo(tilDate);
         }
 
-        if(etDinners.getText().toString().isEmpty()){
-            valid=false;
+        if (etDinners.getText().toString().isEmpty()) {
+            valid = false;
             tilDinners.setError("Required field");
             scrollTo(tilDinners);
         }
 
-        if(etTelf.getText().toString().isEmpty()){
-            valid=false;
+        if (etTelf.getText().toString().isEmpty()) {
+            valid = false;
             tilTelf.setError("Required field");
             scrollTo(tilTelf);
         }
@@ -169,19 +174,19 @@ public class TableReserveFragment extends Fragment {
     }
 
     private void scrollTo(TextInputLayout targetView) {
-        targetView.getParent().requestChildFocus(targetView,targetView);
+        targetView.getParent().requestChildFocus(targetView, targetView);
     }
 
 
     private void onAvailableChanged(Boolean aBoolean) {
-        if(aBoolean){
+        if (aBoolean) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    switch (which){
+                    switch (which) {
                         case DialogInterface.BUTTON_POSITIVE:
                             mViewModel.uploadReservation(name, reservation);
-                            NavDirections navigation = TableReserveFragmentDirections.actionTableReserveFragmentToReserveCompletedFragment(name,etDinners.getText().toString(),reservationDate);
+                            NavDirections navigation = TableReserveFragmentDirections.actionTableReserveFragmentToReserveCompletedFragment(name, etDinners.getText().toString(), reservationDate);
                             Navigation.findNavController(getView()).navigate(navigation);
 
 
@@ -196,9 +201,51 @@ public class TableReserveFragment extends Fragment {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setMessage("We have availability. Do you want to confirm the reservation?").setPositiveButton("Accept", dialogClickListener)
                     .setNegativeButton("Cancel", dialogClickListener).show();
-        } else{
+        } else {
             Toast.makeText(getActivity(), "Not available date.",
                     Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        reservationDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+        etDate.setText(reservationDate);
+    }
+
+    private void showDatePicker() {
+
+        Calendar calendar = Calendar.getInstance();
+
+        DatePickerDialog dpd = DatePickerDialog.newInstance(
+                this,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+        );
+        dpd.show(getFragmentManager(), "DatePicker");
+
+        Calendar min_date = Calendar.getInstance();
+        Calendar max_date = Calendar.getInstance();
+        max_date.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + 1);
+        dpd.setMaxDate(max_date);
+        dpd.setMinDate(min_date);
+
+        for (int i = 0; i < schedule.size(); i++) {
+
+            for (Calendar loopdate = min_date; min_date.before(max_date); min_date.add(Calendar.DATE, 1), loopdate = min_date) {
+                int dayOfWeek = loopdate.get(Calendar.DAY_OF_WEEK);
+
+                if (schedule.get(i) == dayOfWeek) {
+                    Calendar[] disabledDays = new Calendar[1];
+                    disabledDays[0] = loopdate;
+                    dpd.setDisabledDays(disabledDays);
+                }
+
+            }
+            min_date = Calendar.getInstance();
+        }
+    }
+
+
 }
