@@ -79,6 +79,20 @@ public class MyDatabase {
         return restaurant;
     }
 
+  /*  public void uploadRestaurant(Restaurant restaurant){
+        final boolean[] reserved = {false};
+        db.collection("restaurantes").document(restaurant.getName().toLowerCase())
+                .set(restaurant)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        System.out.println("OK");
+                    }
+
+                });
+
+    }*/
+
     public boolean uploadReservation(String nameRestaurant, Reservation reservation){
         final boolean[] reserved = {false};
         db.collection("restaurantes")

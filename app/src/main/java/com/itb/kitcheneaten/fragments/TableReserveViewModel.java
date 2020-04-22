@@ -6,11 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+
 
 import com.itb.kitcheneaten.database.MyDatabase;
 import com.itb.kitcheneaten.model.Reservation;
-import com.itb.kitcheneaten.model.Restaurant;
+
 
 public class TableReserveViewModel extends AndroidViewModel {
 

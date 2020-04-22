@@ -22,13 +22,32 @@ public class RestaurantsListViewModel extends AndroidViewModel {
         db = new MyDatabase();
     }
 
-    public void getAllRestaurants() {
+
+  /*  public void subirRestaurantes() {
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Dalai Lomo");
+        names.add("El Celler de Can Roca");
+        names.add("Can Prat");
+        names.add("Restaurante Josefina");
+        names.add("La fábrica");
+        names.add("El loro charlie");
+        names.add("Sal i Sucre");
+        names.add("Casa Pepe");
+        names.add("Ca la Poli");
+        names.add("Restaurante chino Amistad");
+
+
+        for (int i = 0; i < 10; i++) {
+            Restaurant restaurant = new Restaurant(names.get(i), "Calle falsa " + i, "93584722" + i, 30 + i, "");
+            db.uploadRestaurant(restaurant);
+        }
+    }*/
+
+    public LiveData<ArrayList<Restaurant>> getAllRestaurants() {
         db.getAllRestaurantsFromBBDD();
         restaurants = db.getRestaurants();
-    }
-
-
-    public LiveData<ArrayList<Restaurant>> getRestaurants() {
         return restaurants;
     }
+
+
 }

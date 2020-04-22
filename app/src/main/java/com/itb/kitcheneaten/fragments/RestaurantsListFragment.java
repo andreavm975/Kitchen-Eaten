@@ -1,30 +1,27 @@
 package com.itb.kitcheneaten.fragments;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.itb.kitcheneaten.R;
 import com.itb.kitcheneaten.fragments.adapter.RestaurantAdapter;
 import com.itb.kitcheneaten.model.Restaurant;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,27 +58,29 @@ public class RestaurantsListFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(RestaurantsListViewModel.class);
 
+        //RECYCLERVIEW
         myRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         myRecyclerView.setLayoutManager(linearLayoutManager);
 
+        //ADAPTER
         myAdapter = new RestaurantAdapter(getContext());
         myRecyclerView.setAdapter(myAdapter);
         myAdapter.setListener(this::viewRestaurant);
 
-
+        //TEMPORAL
+        //mViewModel.subirRestaurantes();
+        //LOAD DATA
         loadData();
         loading.setColorSchemeColors(R.color.colorPrimaryDark);
         loading.setProgressBackgroundColorSchemeColor(R.color.colorAccent);
-
         loading.setOnRefreshListener(this::loadData);
 
     }
 
     public void loadData() {
         loading.setRefreshing(true);
-        mViewModel.getAllRestaurants();
-        restaurants = mViewModel.getRestaurants();
+        restaurants = mViewModel.getAllRestaurants();
         restaurants.observe(this, this::restaurantsChanged);
     }
 

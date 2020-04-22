@@ -50,7 +50,6 @@ public class RestaurantDetailFragment extends Fragment {
     @BindView(R.id.swipe_layout_detail)
     SwipeRefreshLayout loading;
 
-
     public static RestaurantDetailFragment newInstance() {
         return new RestaurantDetailFragment();
     }
