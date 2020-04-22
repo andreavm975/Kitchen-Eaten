@@ -68,8 +68,6 @@ public class RestaurantsListFragment extends Fragment {
         myRecyclerView.setAdapter(myAdapter);
         myAdapter.setListener(this::viewRestaurant);
 
-        //TEMPORAL
-        //mViewModel.subirRestaurantes();
         //LOAD DATA
         loadData();
         loading.setColorSchemeColors(R.color.colorPrimaryDark);
