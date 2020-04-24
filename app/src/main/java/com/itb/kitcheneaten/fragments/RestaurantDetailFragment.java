@@ -41,7 +41,7 @@ public class RestaurantDetailFragment extends Fragment {
     @BindView(R.id.tvName)
     TextView tvName;
 
-    @BindView(R.id.tvAddress)
+    @BindView(R.id.tvType)
     TextView tvAddress;
 
     @BindView(R.id.tvTelf)

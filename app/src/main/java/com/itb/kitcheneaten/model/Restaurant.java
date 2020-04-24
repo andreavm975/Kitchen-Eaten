@@ -9,6 +9,7 @@ public class Restaurant {
     private String telf;
     private Integer capacity;
     private String image;
+    private String type;
     private ArrayList<Integer> schedule;
     private ArrayList<Reservation> reservations;
 
@@ -21,6 +22,14 @@ public class Restaurant {
         this.telf = telf;
         this.capacity = capacity;
         this.image = image;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public ArrayList<Integer> getSchedule() {

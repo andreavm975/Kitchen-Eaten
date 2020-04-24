@@ -50,6 +50,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
                 .load(restaurant.getImage())
                 .into(holder.imageRestaurant);
         holder.name.setText(restaurant.getName());
+        holder.type.setText(restaurant.getType());
         holder.address.setText(restaurant.getAddress());
     }
 
@@ -82,6 +83,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
         @BindView(R.id.tvAddress)
         TextView address;
+
+        @BindView(R.id.tvType)
+        TextView type;
 
         public RestaurantViewHolder(@NonNull View itemView) {
             super(itemView);
