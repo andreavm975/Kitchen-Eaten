@@ -17,7 +17,16 @@ import com.itb.kitcheneaten.model.Restaurant;
 
 import java.util.ArrayList;
 
+/**
+ * Classe que permet gestionar les dades de la base de dades (CRUD)
+ */
+
 public class MyDatabase {
+
+    /**
+     * Variables
+     */
+
     FirebaseFirestore db;
     MutableLiveData<ArrayList<Restaurant>> restaurants = new MutableLiveData<>();
     ArrayList<Restaurant> aux = new ArrayList<>();
@@ -26,11 +35,19 @@ public class MyDatabase {
     MutableLiveData<ArrayList<Reservation>> reservations = new MutableLiveData<>();
     MutableLiveData<Boolean> available = new MutableLiveData<>();
 
+    /**
+     * Constructor de la classe que obté la instancia de la base de dades de Firestore Database
+     */
+
     public MyDatabase() {
 
         db = FirebaseFirestore.getInstance();
 
     }
+
+    /**
+     * Mètode que permet obtenir tots els restaurants de la base de dades, construits directament en objectes Restaurant
+     */
 
     public void getAllRestaurantsFromBBDD() {
 
@@ -49,9 +66,18 @@ public class MyDatabase {
             }
 
         });
+
+        // Es neteja la llista perque sino es duplicarien els resultats
+
         aux.clear();
 
     }
+
+    /**
+     * Mètode que permet obtenir un restaurant pel seu nom, construit directament en un objecte Restaurant
+     *
+     * @param name Nom del restaurant
+     */
 
     public void getRestaurantFromName(String name) {
 
@@ -71,13 +97,33 @@ public class MyDatabase {
 
     }
 
+    /**
+     * Mètode que retorna la llista dels restaurants obtinguts
+     *
+     * @return Llista dels restaurants obtinguts
+     */
+
     public LiveData<ArrayList<Restaurant>> getRestaurants() {
         return restaurants;
     }
 
+    /**
+     * Mètode que retorna el restaurant obtingut per nom
+     *
+     * @return Restaurant obtingut per nom
+     */
+
     public LiveData<Restaurant> getRestaurant() {
         return restaurant;
     }
+
+    /**
+     * Mètode que permet pujar una reserva a la base de dades
+     *
+     * @param nameRestaurant Nom del restaurant al qual es vol fer la reserva
+     * @param reservation    Objecte reserva
+     * @return Retorna true o false si s'ha fet la reserva correctament
+     */
 
     public boolean uploadReservation(String nameRestaurant, Reservation reservation) {
         final boolean[] reserved = {false};
@@ -95,8 +141,20 @@ public class MyDatabase {
         return reserved[0];
     }
 
+    /**
+     * Mètode que permet comprobar la disponibilitat a l'hora de fer una reserva
+     *
+     * @param name        Nom del restaurant al qual es vol fer la reserva
+     * @param capacity    Quantitat de comensals
+     * @param reservation Objecte reserva
+     * @return Retorna true o false segons si hi ha disponibilitat a la data seleccionada per a realitzar-se la reserva
+     */
+
     public MutableLiveData<Boolean> isAvailable(String name, int capacity, Reservation reservation) {
         int[] totalDinners = {0};
+
+        //S'obtenen les reserves del restaurant seleccionat a la data seleccionada i es calcula si la suma de tots els comensals de les reserves més la dels
+        //comensals de la reserva a realitzar supera l'aforament màxim. Si no el supera, es podrà fer la reserva
         db.collection("restaurantes")
                 .document(name.toLowerCase())
                 .collection("reservations")

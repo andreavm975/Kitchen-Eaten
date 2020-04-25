@@ -30,6 +30,10 @@ import butterknife.OnClick;
 
 public class RestaurantDetailFragment extends Fragment {
 
+    /**
+     * Variables
+     */
+
     private RestaurantDetailViewModel mViewModel;
     private String name;
     private int capacity;
@@ -64,6 +68,9 @@ public class RestaurantDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        //S'obtè el nom per arguments del fragment RestaurantListFragment
+
         if (getArguments() != null) {
             name = RestaurantDetailFragmentArgs.fromBundle(getArguments()).getName();
         }
@@ -75,11 +82,16 @@ public class RestaurantDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(RestaurantDetailViewModel.class);
 
+        //Es posa el swiper recarregant les dades del fragment
         loading.setRefreshing(true);
+
+        //Es carreguen les dades
         loadData();
         loading.setColorSchemeColors(R.color.colorPrimaryDark);
         loading.setProgressBackgroundColorSchemeColor(R.color.colorAccent);
 
+        //Amb aquest listener, si es fa scroll cap abaix a dalt de tot del fragment, es tornan a carregar les dades, actualitzant-se
+        //posibles canvis a la base de dades
         loading.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -88,13 +100,24 @@ public class RestaurantDetailFragment extends Fragment {
         });
     }
 
+    /**
+     * Mètode que permet obtenir el restaurant
+     */
     private void loadData() {
 
         LiveData<Restaurant> restaurant = mViewModel.getRestaurant(name);
         restaurant.observe(this, this::onRestaurantChanged);
     }
 
+    /**
+     * Mètode que s'executa quan arriba el restaurant i es posa la informació a la layout
+     *
+     * @param restaurant Restaurant obtingut
+     */
     private void onRestaurantChanged(Restaurant restaurant) {
+
+        //Amb Glide es pot descarregar la imatge de la direcció obtinguda de l'objecte restaurant. La imatge es guarda al Firebase Storage
+        //i a la base de dades es guarda al camp image la direcció pùblica de la imatge.//
         Glide.with(getContext())
                 .load(restaurant.getImage())
                 .into(ivRestaurant);
@@ -107,6 +130,10 @@ public class RestaurantDetailFragment extends Fragment {
     }
 
 
+    /**
+     * Botò que navega al fragment per a formalitzar la reserva al restaurant
+     */
+    
     @OnClick(R.id.btnReservation)
     public void onReservationClicked() {
         NavDirections navigation = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToTableReserveFragment(name, capacity, schedule);

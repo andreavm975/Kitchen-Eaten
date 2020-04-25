@@ -20,10 +20,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * Adaptador per al recyclerview que mostra la llista de restaurants
+ */
+
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
 
 
-    // VARIABLES
+    /**
+     * Variables
+     */
+
     private Context myContext;
     List<Restaurant> restaurants;
     OnRestaurantClickListener listener;
@@ -46,6 +53,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     @Override
     public void onBindViewHolder(@NonNull RestaurantViewHolder holder, int position) {
         Restaurant restaurant = restaurants.get(position);
+
+        //Amb Glide es pot descarregar la imatge de la direcció obtinguda de l'objecte restaurant. La imatge es guarda al Firebase Storage
+        //i a la base de dades es guarda al camp image la direcció pùblica de la imatge.
         Glide.with(myContext)
                 .load(restaurant.getImage())
                 .into(holder.imageRestaurant);
