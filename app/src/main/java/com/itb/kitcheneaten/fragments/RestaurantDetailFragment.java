@@ -133,7 +133,7 @@ public class RestaurantDetailFragment extends Fragment {
     /**
      * Botò que navega al fragment per a formalitzar la reserva al restaurant
      */
-    
+
     @OnClick(R.id.btnReservation)
     public void onReservationClicked() {
         NavDirections navigation = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToTableReserveFragment(name, capacity, schedule);
