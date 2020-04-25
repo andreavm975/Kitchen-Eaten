@@ -31,9 +31,7 @@ public class MyDatabase {
     MutableLiveData<ArrayList<Restaurant>> restaurants = new MutableLiveData<>();
     ArrayList<Restaurant> aux = new ArrayList<>();
     MutableLiveData<Restaurant> restaurant = new MutableLiveData<>();
-    MutableLiveData<Reservation> reservation = new MutableLiveData<>();
-    MutableLiveData<ArrayList<Reservation>> reservations = new MutableLiveData<>();
-    MutableLiveData<Boolean> available = new MutableLiveData<>();
+    
 
     /**
      * Constructor de la classe que obté la instancia de la base de dades de Firestore Database
@@ -152,6 +150,7 @@ public class MyDatabase {
 
     public MutableLiveData<Boolean> isAvailable(String name, int capacity, Reservation reservation) {
         int[] totalDinners = {0};
+        MutableLiveData<Boolean> available = new MutableLiveData<>();
 
         //S'obtenen les reserves del restaurant seleccionat a la data seleccionada i es calcula si la suma de tots els comensals de les reserves més la dels
         //comensals de la reserva a realitzar supera l'aforament màxim. Si no el supera, es podrà fer la reserva
@@ -174,10 +173,12 @@ public class MyDatabase {
                                 available.setValue(false);
                             }
                         }
+
                     }
                 });
 
         return available;
+
     }
 
 }
