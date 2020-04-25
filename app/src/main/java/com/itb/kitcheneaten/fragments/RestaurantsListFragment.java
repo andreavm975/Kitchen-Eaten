@@ -76,12 +76,19 @@ public class RestaurantsListFragment extends Fragment {
 
     }
 
+    /**
+     * Mètode que carrega les dades que obté de la base de dades i les recarrega quan es llisca la part superior de la pantalla
+     */
     public void loadData() {
         loading.setRefreshing(true);
         restaurants = mViewModel.getAllRestaurants();
         restaurants.observe(this, this::restaurantsChanged);
     }
 
+    /**
+     * Mètode que observa els restaurants i els posa al Recyclerview
+     * @param restaurants ArrayList<Restaurants> restaurants que agafa de la base de dades
+     */
     private void restaurantsChanged(ArrayList<Restaurant> restaurants) {
         myAdapter.setRestaurants(restaurants);
         loading.setRefreshing(false);
@@ -99,6 +106,10 @@ public class RestaurantsListFragment extends Fragment {
         ButterKnife.bind(this, view);
     }
 
+    /**
+     * Métode que navega cap a un Restaurant per a veure'l en detall
+     * @param restaurant Restaurant que es vol veure
+     */
     private void viewRestaurant(Restaurant restaurant) {
 
         String idName = restaurant.getName();

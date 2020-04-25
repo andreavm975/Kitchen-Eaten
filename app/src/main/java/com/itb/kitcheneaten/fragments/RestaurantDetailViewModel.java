@@ -19,6 +19,11 @@ public class RestaurantDetailViewModel extends AndroidViewModel {
         db= new MyDatabase();
     }
 
+    /**
+     * Mètode que recull un restaurant a partir del seu nom de la base de dades
+     * @param name
+     * @return
+     */
     public LiveData<Restaurant> getRestaurant(String name){
         db.getRestaurantFromName(name);
         restaurant= db.getRestaurant();

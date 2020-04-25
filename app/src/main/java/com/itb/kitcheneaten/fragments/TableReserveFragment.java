@@ -99,25 +99,9 @@ public class TableReserveFragment extends Fragment implements DatePickerDialog.O
     @OnClick({R.id.tilDate, R.id.etDate})
     public void onDateClicked() {
 
-
         showDatePicker();
 
-
-
-      /*  MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
-        builder.setTitleText("Reservation Date");
-        MaterialDatePicker<Long> picker = builder.build();
-        picker.addOnPositiveButtonClickListener(this::doOnDateSelected);
-        picker.show(getFragmentManager(), picker.toString());*/
     }
-
-/*    private void doOnDateSelected(Long aLong) {
-        String pattern = "dd/MM/yyyy";
-        DateFormat df = new SimpleDateFormat(pattern);
-        Date reservation = new Date(aLong);
-        reservationDate = df.format(reservation);
-        etDate.setText(reservationDate);
-    }*/
 
 
     public void getDataFromUser() {
@@ -128,7 +112,6 @@ public class TableReserveFragment extends Fragment implements DatePickerDialog.O
         reservation.setTelf(etTelf.getText().toString());
     }
 
-
     @OnClick(R.id.btnCheck)
     public void onCheckClicked() {
 
@@ -138,6 +121,10 @@ public class TableReserveFragment extends Fragment implements DatePickerDialog.O
         }
     }
 
+    /**
+     * Comprova que tots els camps estiguin omplerts
+     * @return Boolean true si està tot correcte, false si no
+     */
     private boolean validate() {
         boolean valid = true;
         tilName.setErrorEnabled(false);
@@ -177,7 +164,10 @@ public class TableReserveFragment extends Fragment implements DatePickerDialog.O
         targetView.getParent().requestChildFocus(targetView, targetView);
     }
 
-
+    /**
+     * Mètode que observa la variable isAvailable, en cas de ser true mostra un diàleg que confirma la reserva i navega al següent fragment, si es false, mostra un toast advertint-ho
+     * @param aBoolean
+     */
     private void onAvailableChanged(Boolean aBoolean) {
         if (aBoolean) {
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -213,6 +203,9 @@ public class TableReserveFragment extends Fragment implements DatePickerDialog.O
         etDate.setText(reservationDate);
     }
 
+    /**
+     * Mètode que mostra un DatePicker i fa que no estiguin disponibles les dates on cada restaurant està tancat, posa el día mínim d'avui i el màxim en un mes
+     */
     private void showDatePicker() {
 
         Calendar calendar = Calendar.getInstance();
@@ -231,6 +224,7 @@ public class TableReserveFragment extends Fragment implements DatePickerDialog.O
         dpd.setMaxDate(max_date);
         dpd.setMinDate(min_date);
 
+        //For que per cada dia que el restaurant no està obert, el deshabilita
         for (int i = 0; i < schedule.size(); i++) {
 
             for (Calendar loopdate = min_date; min_date.before(max_date); min_date.add(Calendar.DATE, 1), loopdate = min_date) {

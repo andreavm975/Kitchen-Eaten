@@ -2,6 +2,9 @@ package com.itb.kitcheneaten.model;
 
 import java.util.ArrayList;
 
+/**
+ * Classe model que crea objectes Restaurant
+ */
 public class Restaurant {
 
     private String name;
@@ -13,9 +16,11 @@ public class Restaurant {
     private ArrayList<Integer> schedule;
     private ArrayList<Reservation> reservations;
 
+    //Constructor
     public Restaurant() {
     }
 
+    //Constructor amb parametres
     public Restaurant(String name, String address, String telf, Integer capacity, String image) {
         this.name = name;
         this.address = address;
@@ -24,6 +29,7 @@ public class Restaurant {
         this.image = image;
     }
 
+    //Setters i getters
     public String getType() {
         return type;
     }
