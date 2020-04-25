@@ -1,11 +1,15 @@
 package com.itb.kitcheneaten.model;
 
+/**
+ * Classe model que crea objectes Reservation
+ */
 public class Reservation {
     private String date;
     private Integer nDinners;
     private String name;
     private String telf;
 
+    //Setters i getters
     public String getDate() {
         return date;
     }

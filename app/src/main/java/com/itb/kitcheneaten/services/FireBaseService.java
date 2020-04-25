@@ -31,6 +31,10 @@ public class FireBaseService extends FirebaseMessagingService {
         Log.d(TAG, "Refreshed token: " + s);
     }
 
+    /**
+     * Mètode del FirebaseMessagingService, que si arriba una notificació, crida al mètode que crea un canal de notificació, la mostra i un intent amb el que es fara si aquesta es clica
+     * @param remoteMessage
+     */
     @SuppressLint("ResourceAsColor")
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -57,6 +61,9 @@ public class FireBaseService extends FirebaseMessagingService {
 
     }
 
+    /**
+     * Mètode que crea un canal de notificació i les seves configuracions
+     */
     private void createNotificationChannel() {
 
         mNotificationManager =

@@ -22,6 +22,10 @@ public class RestaurantsListViewModel extends AndroidViewModel {
         db = new MyDatabase();
     }
 
+    /**
+     * Mètode que recull tots els restaurants que ha rebut de la base de dades
+     * @return LiveData<ArrayList<Restaurant>> Array de restaurants que rep.
+     */
     public LiveData<ArrayList<Restaurant>> getAllRestaurants() {
         db.getAllRestaurantsFromBBDD();
         restaurants = db.getRestaurants();
